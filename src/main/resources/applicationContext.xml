@@ -11,4 +11,9 @@
           class="ru.titov.springcourse.RockMusic">
     </bean>
 
+    <bean id="musicPlayer"
+        class="ru.titov.springcourse.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
+    </bean>
+
 </beans>
