@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans  xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:context="http://www.springframework.org/schema/context"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="musicBean"
+    <bean id="rockMusic"
           class="ru.titov.springcourse.RockMusic">
+    </bean>
+
+    <bean id="classicalMusic"
+          class="ru.titov.springcourse.ClassicalMusic">
+    </bean>
+
+    <bean id="jazzMusic"
+          class="ru.titov.springcourse.JazzMusic">
+    </bean>
+
+    <bean id="popMusic"
+          class="ru.titov.springcourse.PopMusic">
     </bean>
 
     <bean id="musicPlayer"
         class="ru.titov.springcourse.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <property name="musicList">
+            <list value-type="ru.titov.springcourse.Music">
+                <ref bean="popMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="jazzMusic"/>
+                <ref bean="classicalMusic"/>
+            </list>
+        </property>
     </bean>
 
 </beans>
