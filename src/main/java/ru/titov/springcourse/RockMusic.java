@@ -1,22 +1,17 @@
 package ru.titov.springcourse;
 
+import org.springframework.stereotype.Component;
+
+import java.util.Random;
+
+@Component
 public class RockMusic implements Music {
-    private RockMusic() {}
-
-    public static RockMusic getRockMusic() {
-        return new RockMusic();
-    }
-
-    public void doMyInit() {
-        System.out.println("Doing my initialization");
-    }
-
-    public void doMyDestroy() {
-        System.out.println("Doing my destruction");
-    }
 
     @Override
     public String getSong() {
-        return "Wind cries Mary";
+        Random rand = new Random();
+        int n = rand.nextInt(3);
+        String[] arr = new String[]{"rockMusic1", "rockMusic2", "rockMusic3"};
+        return arr[n];
     }
 }
